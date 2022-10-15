@@ -1,5 +1,10 @@
 import { PropsWithChildren } from "react";
-import { createTheme, ThemeProvider, CssBaseline } from "@mui/material";
+import {
+  createTheme,
+  ThemeProvider,
+  CssBaseline,
+  ThemeOptions
+} from "@mui/material";
 
 import { StyledThemeWrapper } from "./StyledTheme";
 
@@ -16,6 +21,26 @@ export const MuiTheme = {
     background: {
       default: "#EAF2FF",
       paper: "#FFFFFF"
+    }
+  },
+  components: {
+    MuiPaper: {
+      defaultProps: {
+        elevation: 0,
+        sx: {
+          boxShadow: "0 10px 20px #C4C8D040",
+          borderRadius: "20px"
+        }
+      }
+    }
+  },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 700,
+      md: 1100,
+      lg: 1472,
+      xl: 1728
     }
   }
 };
