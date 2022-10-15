@@ -1,5 +1,5 @@
-import React, { useId } from "react";
-import { Container, IconButton, Paper, Stack } from "@mui/material";
+import React, { useState } from "react";
+import { Container, IconButton, Paper, Stack, Typography } from "@mui/material";
 import {
   SearchOutlined,
   NotificationsNoneOutlined,
@@ -12,68 +12,76 @@ import {
   StackedBarChartOutlined,
   ExitToAppOutlined,
   TimelineOutlined,
-  AccountCircle
+  AccountCircle,
+  DirectionsBusOutlined
 } from "@mui/icons-material";
-import { Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 
 import {
   LayoutStyles,
   HeaderStyles,
   MainStyles,
   ContentStyles,
-  AsideStyles
+  AsideStyles,
+  LogoStyles
 } from "./Layout.styles";
+import { AsideItemComponent, HeaderItemComponent } from "./components";
+import { ROUTES } from "../routes";
 
 export const LayoutComponent: React.FC = () => {
-  const id = useId();
+  const [isAsideItemActive, setIsAsideItemActive] = useState(false);
 
   const HEADER_ITEMS = [
     {
-      id,
+      id: 0,
       name: "search",
-      icon: <SearchOutlined />
+      icon: <SearchOutlined />,
+      disabled: true
     },
     {
-      id,
+      id: 1,
       name: "notification",
-      icon: <NotificationsNoneOutlined />
+      icon: <NotificationsNoneOutlined />,
+      badgeContent: "1",
+      isActive: true
     },
     {
-      id,
+      id: 2,
       name: "profile",
-      icon: <Person2Outlined />
+      icon: <Person2Outlined />,
+      disabled: true
     }
   ];
 
   const ASIDE_ITEMS = [
     {
-      id,
-      name: "??",
+      id: 0,
+      to: ROUTES.GENERAL,
       icon: <GridViewOutlined />
     },
     {
-      id,
-      name: "??",
+      id: 1,
+      to: "test1",
       icon: <TimelineOutlined />
     },
     {
-      id,
-      name: "??",
+      id: 2,
+      to: "test2",
       icon: <ArticleOutlined />
     },
     {
-      id,
-      name: "??",
+      id: 3,
+      to: "test3",
       icon: <QueryStatsOutlined />
     },
     {
-      id,
-      name: "??",
+      id: 4,
+      to: "test4",
       icon: <StackedBarChartOutlined />
     },
     {
-      id,
-      name: "??",
+      id: 5,
+      to: "SEILA2",
       icon: <DataSaverOnOutlined />
     }
   ];
@@ -82,10 +90,15 @@ export const LayoutComponent: React.FC = () => {
     <LayoutStyles>
       <Stack component={Container} spacing={2}>
         <HeaderStyles>
-          <span>Dashbus</span>
+          <LogoStyles>
+            <DirectionsBusOutlined />
+            <Typography fontWeight="bold">Dashbus</Typography>
+          </LogoStyles>
           <menu>
-            {HEADER_ITEMS.map(({ id, icon }) => (
-              <IconButton key={id}>{icon}</IconButton>
+            {HEADER_ITEMS.map(({ id, icon, ...rest }) => (
+              <HeaderItemComponent key={id} {...rest}>
+                {icon}
+              </HeaderItemComponent>
             ))}
           </menu>
         </HeaderStyles>
@@ -97,8 +110,14 @@ export const LayoutComponent: React.FC = () => {
               </IconButton>
             </header>
             <menu>
-              {ASIDE_ITEMS.map(({ id, icon }) => (
-                <IconButton key={id}>{icon}</IconButton>
+              {ASIDE_ITEMS.map(({ id, icon, to }) => (
+                <NavLink to={to} tabIndex={-1} key={id}>
+                  {({ isActive }) => (
+                    <AsideItemComponent isActive={isActive}>
+                      {icon}
+                    </AsideItemComponent>
+                  )}
+                </NavLink>
               ))}
             </menu>
             <footer>
