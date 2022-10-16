@@ -59,27 +59,27 @@ export const LayoutComponent: React.FC = () => {
     },
     {
       id: 1,
-      to: "test1",
+      to: ROUTES.PAGE1,
       icon: <TimelineOutlined />
     },
     {
       id: 2,
-      to: "test2",
+      to: ROUTES.PAGE2,
       icon: <ArticleOutlined />
     },
     {
       id: 3,
-      to: "test3",
+      to: ROUTES.PAGE3,
       icon: <QueryStatsOutlined />
     },
     {
       id: 4,
-      to: "test4",
+      to: ROUTES.PAGE4,
       icon: <StackedBarChartOutlined />
     },
     {
       id: 5,
-      to: "SEILA2",
+      to: ROUTES.PAGE5,
       icon: <DataSaverOnOutlined />
     }
   ];

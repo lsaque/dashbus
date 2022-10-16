@@ -7,3 +7,4 @@ export const CardComponent: React.FC<BoxProps> = ({ ...props }) => {
 };
 
 export * from "./header/Header";
+export * from "./content/Content";

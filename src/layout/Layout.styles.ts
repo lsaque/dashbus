@@ -1,13 +1,16 @@
 import { Container, Paper } from "@mui/material";
 import styled from "styled-components";
+import { from } from "../themes";
 
 export const LayoutStyles = styled.div`
   display: flex;
   height: 100vh;
   max-height: 100vh;
-  overflow: hidden;
   padding: 16px;
-  padding-bottom: 0;
+
+  ${from.md} {
+    overflow: hidden;
+  }
 `;
 
 export const DashboardStyles = styled.div`
@@ -42,10 +45,9 @@ export const LogoStyles = styled.div`
 `;
 
 export const AsideStyles = styled(Paper)`
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: space-between;
-  margin-bottom: 16px;
   color: ${(props) => props.theme.palette.background.default};
 
   header {
@@ -73,16 +75,26 @@ export const AsideStyles = styled(Paper)`
     padding: 10px 0;
     border-top: 2px solid ${(props) => props.theme.palette.background.default};
   }
+
+  ${from.md} {
+    display: flex;
+  }
 `;
 
 export const ContentContainerStyles = styled.div`
-  overflow: auto;
   display: flex;
   gap: 16px;
   height: 100%;
+
+  ${from.md} {
+    overflow: auto;
+  }
 `;
 
 export const MainStyles = styled.main`
-  overflow: auto;
   width: 100%;
+
+  ${from.md} {
+    overflow: hidden;
+  }
 `;

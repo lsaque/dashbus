@@ -11,7 +11,12 @@ export const ROUTES = {
   BASE_ROOT: "/",
   UNKNOWN: "*",
 
-  GENERAL: "general"
+  GENERAL: "general",
+  PAGE1: "page1",
+  PAGE2: "page2",
+  PAGE3: "page3",
+  PAGE4: "page4",
+  PAGE5: "page5"
 };
 
 export const router = createBrowserRouter(
@@ -23,10 +28,11 @@ export const router = createBrowserRouter(
     >
       <Route index element={<Navigate to={ROUTES.GENERAL} replace />} />
       <Route path={ROUTES.GENERAL} element={<GeneralPage />} />
-      <Route path="test1" element={<span>teste1</span>} />
-      <Route path="test2" element={<span>teste2</span>} />
-      <Route path="test3" element={<span>teste3</span>} />
-      <Route path="test4" element={<span>teste4</span>} />
+      <Route path={ROUTES.PAGE1} element={<span>Page 1</span>} />
+      <Route path={ROUTES.PAGE2} element={<span>Page 2</span>} />
+      <Route path={ROUTES.PAGE3} element={<span>Page 3</span>} />
+      <Route path={ROUTES.PAGE4} element={<span>Page 4</span>} />
+      <Route path={ROUTES.PAGE5} element={<span>Page 5</span>} />
       <Route
         path={ROUTES.UNKNOWN}
         element={<Navigate to={ROUTES.BASE_ROOT} replace />}

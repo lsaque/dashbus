@@ -10,9 +10,9 @@ export const CardHeaderComponent: React.FC<CardHeaderProps> = ({
   return (
     <CardHeaderStyles
       {...props}
-      title="Vendas - Ônibus"
       titleTypographyProps={{
-        fontWeight: "bold"
+        fontWeight: "bold",
+        noWrap: true
       }}
       action={
         <IconButton aria-label="info">
