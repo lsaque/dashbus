@@ -1,10 +1,9 @@
-import React, { useState } from "react";
-import { Container, IconButton, Paper, Stack, Typography } from "@mui/material";
+import React from "react";
+import { Box, IconButton, Paper, Typography } from "@mui/material";
 import {
   SearchOutlined,
   NotificationsNoneOutlined,
   Person2Outlined,
-  LogoutOutlined,
   ArticleOutlined,
   DataSaverOnOutlined,
   GridViewOutlined,
@@ -21,16 +20,15 @@ import {
   LayoutStyles,
   HeaderStyles,
   MainStyles,
-  ContentStyles,
   AsideStyles,
-  LogoStyles
+  LogoStyles,
+  DashboardStyles,
+  ContentContainerStyles
 } from "./Layout.styles";
 import { AsideItemComponent, HeaderItemComponent } from "./components";
 import { ROUTES } from "../routes";
 
 export const LayoutComponent: React.FC = () => {
-  const [isAsideItemActive, setIsAsideItemActive] = useState(false);
-
   const HEADER_ITEMS = [
     {
       id: 0,
@@ -88,7 +86,7 @@ export const LayoutComponent: React.FC = () => {
 
   return (
     <LayoutStyles>
-      <Stack component={Container} spacing={2}>
+      <DashboardStyles>
         <HeaderStyles>
           <LogoStyles>
             <DirectionsBusOutlined />
@@ -102,24 +100,27 @@ export const LayoutComponent: React.FC = () => {
             ))}
           </menu>
         </HeaderStyles>
-        <Stack spacing={2} direction="row">
+
+        <ContentContainerStyles>
           <AsideStyles>
-            <header>
-              <IconButton disableRipple color="primary">
-                <AccountCircle fontSize="large" />
-              </IconButton>
-            </header>
-            <menu>
-              {ASIDE_ITEMS.map(({ id, icon, to }) => (
-                <NavLink to={to} tabIndex={-1} key={id}>
-                  {({ isActive }) => (
-                    <AsideItemComponent isActive={isActive}>
-                      {icon}
-                    </AsideItemComponent>
-                  )}
-                </NavLink>
-              ))}
-            </menu>
+            <Box overflow="auto">
+              <header>
+                <IconButton disableRipple color="primary">
+                  <AccountCircle fontSize="large" />
+                </IconButton>
+              </header>
+              <menu>
+                {ASIDE_ITEMS.map(({ id, icon, to }) => (
+                  <NavLink to={to} tabIndex={-1} key={id}>
+                    {({ isActive }) => (
+                      <AsideItemComponent isActive={isActive}>
+                        {icon}
+                      </AsideItemComponent>
+                    )}
+                  </NavLink>
+                ))}
+              </menu>
+            </Box>
             <footer>
               <IconButton>
                 <ExitToAppOutlined />
@@ -129,8 +130,8 @@ export const LayoutComponent: React.FC = () => {
           <MainStyles>
             <Outlet />
           </MainStyles>
-        </Stack>
-      </Stack>
+        </ContentContainerStyles>
+      </DashboardStyles>
     </LayoutStyles>
   );
 };

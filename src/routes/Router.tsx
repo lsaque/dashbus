@@ -5,6 +5,7 @@ import {
   Route
 } from "react-router-dom";
 import { LayoutComponent } from "../layout";
+import { GeneralPage } from "../pages";
 
 export const ROUTES = {
   BASE_ROOT: "/",
@@ -21,7 +22,7 @@ export const router = createBrowserRouter(
       errorElement={<span>Something went wrong (Error boundary)</span>}
     >
       <Route index element={<Navigate to={ROUTES.GENERAL} replace />} />
-      <Route path={ROUTES.GENERAL} element={<span>dashboard</span>} />
+      <Route path={ROUTES.GENERAL} element={<GeneralPage />} />
       <Route path="test1" element={<span>teste1</span>} />
       <Route path="test2" element={<span>teste2</span>} />
       <Route path="test3" element={<span>teste3</span>} />

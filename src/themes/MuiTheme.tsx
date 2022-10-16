@@ -32,6 +32,14 @@ export const MuiTheme = {
           borderRadius: "20px"
         }
       }
+      // defaultProps: {
+      // elevation: 0,
+      // sx: {
+      // boxShadow: "0 10px 20px #C4C8D040",
+      // borderRadius: "20px",
+      // border: "1px solid red"
+      // }
+      // }
     }
   },
   breakpoints: {

@@ -3,13 +3,22 @@ import styled from "styled-components";
 
 export const LayoutStyles = styled.div`
   display: flex;
-  justify-content: center;
-  min-height: 100vh;
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+  padding: 16px;
+  padding-bottom: 0;
+`;
+
+export const DashboardStyles = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   width: 100%;
+  height: 100%;
 `;
 
 export const HeaderStyles = styled.header`
-  margin-top: 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -32,15 +41,11 @@ export const LogoStyles = styled.div`
   background: ${(props) => props.theme.palette.primary.main};
 `;
 
-export const ContentStyles = styled.div`
-  display: flex;
-  gap: 20px;
-`;
-
 export const AsideStyles = styled(Paper)`
-  height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 16px;
   color: ${(props) => props.theme.palette.background.default};
 
   header {
@@ -59,6 +64,7 @@ export const AsideStyles = styled(Paper)`
     align-items: center;
     justify-content: center;
     gap: 15px;
+    overflow: auto;
   }
 
   footer {
@@ -69,7 +75,14 @@ export const AsideStyles = styled(Paper)`
   }
 `;
 
+export const ContentContainerStyles = styled.div`
+  overflow: auto;
+  display: flex;
+  gap: 16px;
+  height: 100%;
+`;
+
 export const MainStyles = styled.main`
-  border: 1px solid green;
+  overflow: auto;
   width: 100%;
 `;
