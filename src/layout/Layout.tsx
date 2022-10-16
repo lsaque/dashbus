@@ -12,7 +12,12 @@ import {
   ExitToAppOutlined,
   TimelineOutlined,
   AccountCircle,
-  DirectionsBusOutlined
+  DirectionsBusOutlined,
+  AddCircleOutlineOutlined,
+  AddCircle,
+  MultilineChartOutlined,
+  AddCircleOutlineTwoTone,
+  AddCircleOutline
 } from "@mui/icons-material";
 import { NavLink, Outlet } from "react-router-dom";
 
@@ -75,12 +80,20 @@ export const LayoutComponent: React.FC = () => {
     {
       id: 4,
       to: ROUTES.PAGE4,
-      icon: <StackedBarChartOutlined />
+      icon: <MultilineChartOutlined />
     },
     {
       id: 5,
       to: ROUTES.PAGE5,
-      icon: <DataSaverOnOutlined />
+      icon: <QueryStatsOutlined />
+    },
+    {
+      id: 6,
+      to: ROUTES.NEW,
+      icon: <AddCircleOutline />,
+      onClick: () => {
+        console.log("add");
+      }
     }
   ];
 
@@ -110,10 +123,10 @@ export const LayoutComponent: React.FC = () => {
                 </IconButton>
               </header>
               <menu>
-                {ASIDE_ITEMS.map(({ id, icon, to }) => (
+                {ASIDE_ITEMS.map(({ id, icon, to, ...rest }) => (
                   <NavLink to={to} tabIndex={-1} key={id}>
                     {({ isActive }) => (
-                      <AsideItemComponent isActive={isActive}>
+                      <AsideItemComponent isActive={isActive} {...rest}>
                         {icon}
                       </AsideItemComponent>
                     )}

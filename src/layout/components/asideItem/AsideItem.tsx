@@ -9,7 +9,7 @@ export const AsideItemComponent: React.FC<
 > = ({ children, isActive, ...props }) => {
   return (
     <AsideItemStyles isActive={isActive} tabIndex={-1}>
-      <IconButton tabIndex={0} disableTouchRipple>
+      <IconButton tabIndex={0} disableTouchRipple {...props}>
         {children}
       </IconButton>
     </AsideItemStyles>

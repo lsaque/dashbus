@@ -5,7 +5,7 @@ import {
   Route
 } from "react-router-dom";
 import { LayoutComponent } from "../layout";
-import { GeneralPage } from "../pages";
+import { GeneralPage, NewPage } from "../pages";
 
 export const ROUTES = {
   BASE_ROOT: "/",
@@ -16,7 +16,8 @@ export const ROUTES = {
   PAGE2: "page2",
   PAGE3: "page3",
   PAGE4: "page4",
-  PAGE5: "page5"
+  PAGE5: "page5",
+  NEW: "new"
 };
 
 export const router = createBrowserRouter(
@@ -33,6 +34,7 @@ export const router = createBrowserRouter(
       <Route path={ROUTES.PAGE3} element={<span>Page 3</span>} />
       <Route path={ROUTES.PAGE4} element={<span>Page 4</span>} />
       <Route path={ROUTES.PAGE5} element={<span>Page 5</span>} />
+      <Route path={ROUTES.NEW} element={<NewPage />} />
       <Route
         path={ROUTES.UNKNOWN}
         element={<Navigate to={ROUTES.BASE_ROOT} replace />}

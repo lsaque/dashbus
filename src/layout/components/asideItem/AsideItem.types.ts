@@ -1,5 +1,5 @@
-import { IconProps } from "@mui/material";
+import { IconButtonProps } from "@mui/material";
 
-export interface AsideItemPropTypes extends IconProps {
+export interface AsideItemPropTypes extends IconButtonProps {
   isActive?: boolean;
 }
