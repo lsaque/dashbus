@@ -8,7 +8,8 @@ export const CardContentStyles = styled(CardContent)`
   display: flex;
   flex-direction: column;
   gap: 16px;
-
+  position: relative;
+  z-index: 2;
   ${from.md} {
     height: calc(100% - 65px);
   }

@@ -15,9 +15,11 @@ export const CardHeaderComponent: React.FC<CardHeaderProps> = ({
         noWrap: true
       }}
       action={
-        <IconButton aria-label="info">
-          <InfoOutlined />
-        </IconButton>
+        props.action || (
+          <IconButton aria-label="info">
+            <InfoOutlined />
+          </IconButton>
+        )
       }
     />
   );

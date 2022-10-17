@@ -1,8 +1,10 @@
 import React from "react";
-import { BoxProps, Paper } from "@mui/material";
-import { CardStyles } from "./Card.styles";
+import { Paper } from "@mui/material";
 
-export const CardComponent: React.FC<BoxProps> = ({ ...props }) => {
+import { CardStyles } from "./Card.styles";
+import { CardPropTypes } from "./Card.types";
+
+export const CardComponent: React.FC<CardPropTypes> = ({ ...props }) => {
   return <CardStyles component={Paper} {...props} />;
 };
 

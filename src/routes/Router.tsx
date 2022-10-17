@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import { usePageContext } from "../common";
 import { LayoutComponent } from "../layout";
-import { GeneralPage, NewPage } from "../pages";
+import { GeneralPage, NewPage, CustomPage } from "../pages";
 
 export const ROUTES = {
   BASE_ROOT: "/",
@@ -40,7 +40,7 @@ export const router = createBrowserRouter(
       <Route path={ROUTES.PAGE4} element={<span>Page 4</span>} />
       <Route path={ROUTES.PAGE5} element={<span>Page 5</span>} />
 
-      <Route path={ROUTES.CUSTOM}>
+      <Route path={ROUTES.CUSTOM} element={<CustomPage />}>
         <Route path={ROUTES.ID} element={<span>custom</span>} />
       </Route>
 
