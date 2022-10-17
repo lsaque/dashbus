@@ -31,8 +31,7 @@ export const router = createBrowserRouter(
       element={<LayoutComponent />}
       errorElement={<span>Something went wrong (Error boundary)</span>}
     >
-      <Route index element={<Navigate to={ROUTES.GENERAL} replace />} />
-      <Route path={ROUTES.GENERAL} element={<GeneralPage />} />
+      <Route index element={<GeneralPage />} />
 
       <Route path={ROUTES.PAGE1} element={<span>Page 1</span>} />
       <Route path={ROUTES.PAGE2} element={<span>Page 2</span>} />
