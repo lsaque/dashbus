@@ -4,6 +4,7 @@ import {
   ArticleOutlined,
   AbcOutlined
 } from "@mui/icons-material";
+import { Typography } from "@mui/material";
 import React, {
   createContext,
   useContext,
@@ -12,7 +13,14 @@ import React, {
   PropsWithChildren,
   useEffect
 } from "react";
-import { renderDefaultChart } from "../..";
+import {
+  renderBusSalesChart,
+  renderDefaultChart,
+  renderFleetRenewalData,
+  renderProconveRenovationChart
+} from "../..";
+
+import janCalendar from "../../../assets/images/jan_calendar.jpg";
 
 import { PageContextTypes, PageTypes } from "./Page.context.types";
 
@@ -32,14 +40,65 @@ export const PageContextProvider: React.FC<PropsWithChildren> = ({
     },
     {
       id: 1,
-      name: "Page 1",
-      to: "page-1",
-      icon: <TimelineOutlined />
+      name: "Proconve",
+      to: "proconve",
+      icon: <TimelineOutlined />,
+      charts: [
+        {
+          element: renderBusSalesChart(),
+          name: "Vendas - ÔNIBUS",
+          gridArea: "a",
+          id: "drop-card-a"
+        },
+        {
+          element: (
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                display: "flex",
+                alignItems: "center",
+                flexDirection: "column",
+                width: "100%",
+                height: "100%",
+                gap: "16px"
+              }}
+            >
+              <img
+                alt="Calendario"
+                src={janCalendar}
+                loading="lazy"
+                style={{
+                  marginTop: "12px",
+                  maxHeight: "80%",
+                  width: "auto"
+                }}
+              />
+              <Typography>1 de Janeiro de 2023</Typography>
+            </div>
+          ),
+          name: "PROCONVE P8",
+          gridArea: "b",
+          id: "drop-card-b"
+        },
+        {
+          element: renderFleetRenewalData(),
+          name: "Renovação de frota (Clientes Scania)",
+          gridArea: "c",
+          id: "drop-card-c"
+        },
+        {
+          element: renderProconveRenovationChart(),
+          name: "Renovação do Proconve",
+          gridArea: "d",
+          id: "drop-card-d"
+        }
+      ]
     },
     {
       id: 2,
       name: "Page 2",
-      to: "page-2",
+      to: "custom/2",
       icon: <ArticleOutlined />
     },
     {

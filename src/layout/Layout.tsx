@@ -32,34 +32,7 @@ import {
 } from "./Layout.styles";
 import { AsideItemComponent, HeaderItemComponent } from "./components";
 import { ROUTES } from "../routes";
-import { PageTypes, usePageContext } from "../common";
-
-// export const ASIDE_ITEMS_LIST = new Array<PageTypes>(
-//   {
-//     id: 0,
-//     name: "General",
-//     to: "general",
-//     icon: <GridViewOutlined />
-//   },
-//   {
-//     id: 1,
-//     name: "Page 1",
-//     to: "page-1",
-//     icon: <TimelineOutlined />
-//   },
-//   {
-//     id: 2,
-//     name: "Page 2",
-//     to: "page-2",
-//     icon: <ArticleOutlined />
-//   },
-//   {
-//     id: 3,
-//     name: "New",
-//     to: "new",
-//     icon: <AddCircleOutline />
-//   }
-// );
+import { usePageContext } from "../common";
 
 export const LayoutComponent: React.FC = () => {
   const { pages } = usePageContext();
@@ -85,39 +58,6 @@ export const LayoutComponent: React.FC = () => {
       disabled: true
     }
   ];
-
-  // const ASIDE_ITEMS = [
-  //   {
-  //     id: 0,
-  //     name: "General",
-  //     to: ROUTES.GENERAL,
-  //     icon: <GridViewOutlined />
-  //   },
-  //   {
-  //     id: 1,
-  //     nam: "Page 1",
-  //     to: ROUTES.PAGE1,
-  //     icon: <TimelineOutlined />
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "Page 2",
-  //     to: ROUTES.PAGE2,
-  //     icon: <ArticleOutlined />
-  //   },
-  //   {
-  //     id: 3,
-  //     to: ROUTES.NEW,
-  //     icon: <AddCircleOutline />,
-  //     onClick: () => {
-  //       console.log("add");
-  //     }
-  //   }
-  // ];
-
-  // useEffect(() => {
-  //   console.log(ASIDE_ITEMS_LIST);
-  // }, [ASIDE_ITEMS_LIST]);
 
   return (
     <LayoutStyles>

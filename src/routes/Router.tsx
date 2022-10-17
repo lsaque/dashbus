@@ -4,16 +4,15 @@ import {
   Navigate,
   Route
 } from "react-router-dom";
-import { usePageContext } from "../common";
 import { LayoutComponent } from "../layout";
-import { GeneralPage, NewPage, CustomPage } from "../pages";
+import { GeneralPage, NewPage, CustomPage, ProconvePage } from "../pages";
 
 export const ROUTES = {
   BASE_ROOT: "/",
   UNKNOWN: "*",
 
   GENERAL: "general",
-  PAGE1: "page-1",
+  PROCONVE: "proconve",
   PAGE2: "page-2",
   PAGE3: "page-3",
   PAGE4: "page-4",
@@ -31,9 +30,9 @@ export const router = createBrowserRouter(
       element={<LayoutComponent />}
       errorElement={<span>Something went wrong (Error boundary)</span>}
     >
-      <Route index element={<GeneralPage />} />
-
-      <Route path={ROUTES.PAGE1} element={<span>Page 1</span>} />
+      <Route index element={<Navigate to={ROUTES.GENERAL} />} />
+      <Route path={ROUTES.GENERAL} element={<GeneralPage />} />
+      <Route path={ROUTES.PROCONVE} element={<ProconvePage />} />
       <Route path={ROUTES.PAGE2} element={<span>Page 2</span>} />
       <Route path={ROUTES.PAGE3} element={<span>Page 3</span>} />
       <Route path={ROUTES.PAGE4} element={<span>Page 4</span>} />

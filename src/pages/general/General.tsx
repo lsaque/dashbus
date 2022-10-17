@@ -25,11 +25,17 @@ import {
 import {
   CardComponent,
   CardContentComponent,
-  CardHeaderComponent
+  CardHeaderComponent,
+  CUSTOMERS_MOCK_LIST,
+  renderFleetRenewalData,
+  renderProconveRenovationChart
 } from "../../common";
 
 import { GeneralStyles, GridLayoutStyles } from "./General.styles";
-import { CategoryItemComponent, CustomerComponent } from "./components";
+import {
+  CategoryItemComponent,
+  CustomerComponent
+} from "../../common/data/components";
 
 const data1 = [
   {
@@ -87,87 +93,7 @@ const data2 = [
   { index: 10000, blueLine: 678 }
 ];
 
-const data3 = [
-  { name: "Proconve P8", value: 2756 },
-  { name: "Proconve P7", value: 1916 }
-];
-
 export const GeneralPage: React.FC = () => {
-  const [activeData3Index, setActiveData3Index] = useState(0);
-
-  const renderActiveShape = (props: any) => {
-    const RADIAN = Math.PI / 180;
-    const {
-      cx,
-      cy,
-      midAngle,
-      innerRadius,
-      outerRadius,
-      startAngle,
-      endAngle,
-      fill,
-      payload,
-      percent,
-      value
-    } = props;
-    const sin = Math.sin(-RADIAN * midAngle);
-    const cos = Math.cos(-RADIAN * midAngle);
-    const sx = cx + (outerRadius + 10) * cos;
-    const sy = cy + (outerRadius + 10) * sin;
-    const mx = cx + (outerRadius + 30) * cos;
-    const my = cy + (outerRadius + 30) * sin;
-    const ex = mx + (cos >= 0 ? 1 : -1) * 22;
-    const ey = my;
-    const textAnchor = cos >= 0 ? "start" : "end";
-
-    return (
-      <g>
-        <text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>
-          {payload.name}
-        </text>
-        <Sector
-          cx={cx}
-          cy={cy}
-          innerRadius={innerRadius}
-          outerRadius={outerRadius}
-          startAngle={startAngle}
-          endAngle={endAngle}
-          fill={fill}
-        />
-        <Sector
-          cx={cx}
-          cy={cy}
-          startAngle={startAngle}
-          endAngle={endAngle}
-          innerRadius={outerRadius + 6}
-          outerRadius={outerRadius + 10}
-          fill={fill}
-        />
-        <path
-          d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`}
-          stroke={fill}
-          fill="none"
-        />
-        <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none" />
-        <text
-          x={ex + (cos >= 0 ? 1 : -1) * 12}
-          y={ey}
-          textAnchor={textAnchor}
-          fill="#333"
-        >{`PV ${value}`}</text>
-        <text
-          x={ex + (cos >= 0 ? 1 : -1) * 12}
-          y={ey}
-          dy={18}
-          textAnchor={textAnchor}
-          fill="#999"
-        >
-          {`(Rate ${(percent * 100).toFixed(2)}%)`}
-        </text>
-      </g>
-    );
-  };
-
   return (
     <GeneralStyles>
       <GridLayoutStyles>
@@ -246,9 +172,9 @@ export const GeneralPage: React.FC = () => {
           <CardHeaderComponent title="Clientes" />
           <Divider />
           <CardContentComponent>
-            {[...Array(50)].map((_, index) => (
+            {CUSTOMERS_MOCK_LIST.map(({ name }, index) => (
               <CustomerComponent
-                name="Isaque"
+                name={name}
                 img={`https://picsum.photos/200/300?random=${index}`}
                 isOnline={Boolean(Math.random())}
               />
@@ -259,56 +185,14 @@ export const GeneralPage: React.FC = () => {
           <CardHeaderComponent title="Renovação de frota (Clientes Scania)" />
           <Divider />
           <CardContentComponent>
-            {[...Array(10)].map((_, index) => (
-              <div
-                style={{ display: "flex", alignItems: "center", gap: "16px" }}
-              >
-                <CustomerComponent
-                  name="Isaque"
-                  img={`https://picsum.photos/200/300?random=${index}`}
-                />
-                <div style={{ display: "flex", gap: "16px" }}>
-                  <CategoryItemComponent
-                    value={125}
-                    icon={DirectionsBus}
-                    title="Ônibus"
-                  />
-                  <CategoryItemComponent
-                    value={50}
-                    icon={RestartAlt}
-                    title="+10 anos"
-                  />
-                  <CategoryItemComponent
-                    value={40}
-                    icon={Percent}
-                    title="Renovados"
-                    isPercentage
-                  />
-                </div>
-              </div>
-            ))}
+            {renderFleetRenewalData()}
           </CardContentComponent>
         </CardComponent>
         <CardComponent gridArea="e">
           <CardHeaderComponent title="Renovação Proconve" />
           <Divider />
           <CardContentComponent>
-            <ResponsiveContainer width="100%" height="100%">
-              <PieChart width={400} height={400}>
-                <Pie
-                  activeIndex={activeData3Index}
-                  activeShape={renderActiveShape}
-                  data={data3}
-                  cx="50%"
-                  cy="50%"
-                  innerRadius={60}
-                  outerRadius={80}
-                  fill="#7974ce"
-                  dataKey="value"
-                  onMouseEnter={(_, index) => setActiveData3Index(index)}
-                />
-              </PieChart>
-            </ResponsiveContainer>
+            {renderProconveRenovationChart()}
           </CardContentComponent>
         </CardComponent>
       </GridLayoutStyles>

@@ -58,7 +58,7 @@ const DRAGGABLE_CHARTS_LIST = [
   },
   {
     id: "drag-chart-6",
-    title: "Taxa de desemprego",
+    title: "AAAAAA",
     element: renderDefaultChart()
   },
   {
@@ -68,7 +68,7 @@ const DRAGGABLE_CHARTS_LIST = [
   },
   {
     id: "drag-chart-8",
-    title: "Taxa de desemprego",
+    title: "AAAAAA",
     element: renderDefaultChart()
   }
 ];
@@ -154,7 +154,7 @@ export const CustomPage: React.FC = () => {
 
           <CardComponent
             gridArea="e"
-            style={{ display: "flex", flexDirection: "column", gap: "16px" }}
+            style={{ display: "flex", flexDirection: "column", gap: "24px" }}
           >
             <TextField
               variant="filled"
@@ -179,23 +179,28 @@ export const CustomPage: React.FC = () => {
                   style={{
                     display: "flex",
                     flexDirection: "column",
-                    gap: "16px"
+                    gap: "24px"
                   }}
                 >
-                  {DRAGGABLE_CHARTS_LIST.map(({ id, element }, index) => (
-                    <Draggable key={id} draggableId={id} index={index}>
-                      {(provided) => (
-                        <div
-                          ref={provided.innerRef}
-                          style={{ height: "100%", position: "relative" }}
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}
-                        >
-                          <DraggableItemComponent chart={element} />
-                        </div>
-                      )}
-                    </Draggable>
-                  ))}
+                  {DRAGGABLE_CHARTS_LIST.map(
+                    ({ id, element, title }, index) => (
+                      <Draggable key={id} draggableId={id} index={index}>
+                        {(provided) => (
+                          <div
+                            ref={provided.innerRef}
+                            style={{ height: "100%", position: "relative" }}
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
+                          >
+                            <DraggableItemComponent
+                              chart={element}
+                              title={title}
+                            />
+                          </div>
+                        )}
+                      </Draggable>
+                    )
+                  )}
                   {provided.placeholder}
                 </div>
               )}
