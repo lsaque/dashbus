@@ -45,26 +45,10 @@ export const ProconvePage: React.FC = () => {
     <ProconveStyles>
       <GridLayoutStyles>
         {curPage?.charts?.map(({ gridArea, element, name, id }) => (
-          <CardComponent
-            key={id}
-            gridArea={gridArea}
-            isDroppable={!Boolean(element)}
-          >
+          <CardComponent key={id} gridArea={gridArea}>
             {Boolean(element) && (
               <>
-                <CardHeaderComponent
-                  title={name}
-                  action={
-                    <IconButton
-                      aria-label="Deletar gráfico"
-                      onClick={() => {
-                        removePageChart(pageId, id);
-                      }}
-                    >
-                      <DeleteOutlined />
-                    </IconButton>
-                  }
-                />
+                <CardHeaderComponent title={name} />
                 <CardContentComponent>{element}</CardContentComponent>
               </>
             )}
