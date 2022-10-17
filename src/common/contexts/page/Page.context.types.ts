@@ -9,7 +9,7 @@ export type ChartTypes = {
   name: string | null;
   element: JSX.Element | null;
   category?: CategoryTypes;
-  gridArea: "a" | "b" | "c" | "d";
+  gridArea: "a" | "b" | "c" | "d" | "e";
   id: string;
 };
 

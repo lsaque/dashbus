@@ -5,7 +5,13 @@ import {
   Route
 } from "react-router-dom";
 import { LayoutComponent } from "../layout";
-import { GeneralPage, NewPage, CustomPage, ProconvePage } from "../pages";
+import {
+  GeneralPage,
+  NewPage,
+  CustomPage,
+  ProconvePage,
+  HolidayPage
+} from "../pages";
 
 export const ROUTES = {
   BASE_ROOT: "/",
@@ -13,10 +19,8 @@ export const ROUTES = {
 
   GENERAL: "general",
   PROCONVE: "proconve",
-  PAGE2: "page-2",
-  PAGE3: "page-3",
-  PAGE4: "page-4",
-  PAGE5: "page-5",
+  HOLIDAY: "holiday",
+
   CUSTOM: "custom",
   NEW: "new",
 
@@ -31,12 +35,10 @@ export const router = createBrowserRouter(
       errorElement={<span>Something went wrong (Error boundary)</span>}
     >
       <Route index element={<Navigate to={ROUTES.GENERAL} />} />
+
       <Route path={ROUTES.GENERAL} element={<GeneralPage />} />
       <Route path={ROUTES.PROCONVE} element={<ProconvePage />} />
-      <Route path={ROUTES.PAGE2} element={<span>Page 2</span>} />
-      <Route path={ROUTES.PAGE3} element={<span>Page 3</span>} />
-      <Route path={ROUTES.PAGE4} element={<span>Page 4</span>} />
-      <Route path={ROUTES.PAGE5} element={<span>Page 5</span>} />
+      <Route path={ROUTES.HOLIDAY} element={<HolidayPage />} />
 
       <Route path={ROUTES.CUSTOM} element={<CustomPage />}>
         <Route path={ROUTES.ID} element={<span>custom</span>} />

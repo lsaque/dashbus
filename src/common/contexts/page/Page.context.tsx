@@ -16,10 +16,16 @@ import React, {
 import {
   renderBusSalesChart,
   renderDefaultChart,
+  renderDollarChart,
   renderFleetRenewalData,
-  renderProconveRenovationChart
+  renderMarketByCompanyChart,
+  renderNumberOfPassengersChart,
+  renderProconveRenovationChart,
+  renderServiceBillingChart
 } from "../..";
 
+import sepCalendar from "../../../assets/images/sep_calendar.jpg";
+import sepCalendar2018 from "../../../assets/images/sep_calendar_2018.jpg";
 import janCalendar from "../../../assets/images/jan_calendar.jpg";
 
 import { PageContextTypes, PageTypes } from "./Page.context.types";
@@ -97,9 +103,91 @@ export const PageContextProvider: React.FC<PropsWithChildren> = ({
     },
     {
       id: 2,
-      name: "Page 2",
-      to: "custom/2",
-      icon: <ArticleOutlined />
+      name: "Holiday",
+      to: "holiday",
+      icon: <ArticleOutlined />,
+      charts: [
+        {
+          element: renderNumberOfPassengersChart(),
+          name: "Número de passageiros (Rodoviárias)",
+          gridArea: "a",
+          id: "drop-card-a"
+        },
+        {
+          element: (
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                display: "flex",
+                alignItems: "center",
+                flexDirection: "column",
+                width: "100%",
+                height: "100%",
+                gap: "16px"
+              }}
+            >
+              <img
+                alt="Calendario"
+                src={sepCalendar}
+                loading="lazy"
+                style={{
+                  marginTop: "12px",
+                  maxHeight: "80%",
+                  width: "auto"
+                }}
+              />
+              <Typography>Setembro de 2026</Typography>
+            </div>
+          ),
+          name: "Feriado prolongado",
+          gridArea: "b",
+          id: "drop-card-b"
+        },
+        {
+          element: renderServiceBillingChart(),
+          name: "Faturamento por serviço (Milhões)",
+          gridArea: "c",
+          id: "drop-card-c"
+        },
+        {
+          element: renderMarketByCompanyChart(),
+          name: "Mercado x Empresa",
+          gridArea: "d",
+          id: "drop-card-d"
+        },
+        {
+          element: (
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                display: "flex",
+                alignItems: "center",
+                flexDirection: "column",
+                width: "100%",
+                height: "100%",
+                gap: "16px"
+              }}
+            >
+              <img
+                alt="Calendario"
+                src={sepCalendar2018}
+                loading="lazy"
+                style={{
+                  marginTop: "12px",
+                  maxHeight: "80%",
+                  width: "auto"
+                }}
+              />
+              <Typography>Setembro de 2018</Typography>
+            </div>
+          ),
+          name: "Renovação do Proconve",
+          gridArea: "e",
+          id: "drop-card-e"
+        }
+      ]
     },
     {
       id: 3,
@@ -108,8 +196,8 @@ export const PageContextProvider: React.FC<PropsWithChildren> = ({
       icon: <AbcOutlined />,
       charts: [
         {
-          element: renderDefaultChart(),
-          name: "Gráfico padrão",
+          element: null,
+          name: null,
           gridArea: "a",
           id: "drop-card-a"
         },

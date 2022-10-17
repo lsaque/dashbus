@@ -5,9 +5,23 @@ import {
   CardHeader,
   Divider,
   Paper,
-  TextField
+  TextField,
+  Typography
 } from "@mui/material";
-import { AbcOutlined } from "@mui/icons-material";
+import {
+  AbcOutlined,
+  AccountTreeOutlined,
+  AddchartOutlined,
+  DataUsageOutlined,
+  DonutSmallOutlined,
+  MultilineChartOutlined,
+  NetworkPingOutlined,
+  PieChartOutlined,
+  SsidChartOutlined,
+  StackedBarChartOutlined,
+  TroubleshootOutlined,
+  WaterfallChartOutlined
+} from "@mui/icons-material";
 
 import {
   CardComponent,
@@ -19,6 +33,57 @@ import {
 } from "../../common";
 
 import { NewStyles } from "./New.styles";
+
+const ICONS_LIST = [
+  {
+    id: 0,
+    icon: <MultilineChartOutlined />
+  },
+  {
+    id: 1,
+    icon: <StackedBarChartOutlined />
+  },
+  {
+    id: 2,
+    icon: <PieChartOutlined />
+  },
+  {
+    id: 3,
+    icon: <DataUsageOutlined />
+  },
+  {
+    id: 4,
+    icon: <TroubleshootOutlined />
+  },
+  {
+    id: 5,
+    icon: <AddchartOutlined />
+  },
+  {
+    id: 6,
+    icon: <DonutSmallOutlined />
+  },
+  {
+    id: 7,
+    icon: <WaterfallChartOutlined />
+  },
+  {
+    id: 8,
+    icon: <SsidChartOutlined />
+  },
+  {
+    id: 9,
+    icon: <StackedBarChartOutlined />
+  },
+  {
+    id: 10,
+    icon: <NetworkPingOutlined />
+  },
+  {
+    id: 10,
+    icon: <AccountTreeOutlined />
+  }
+];
 
 export const NewPage: React.FC = () => {
   const { pages, setPages } = usePageContext();
@@ -86,6 +151,7 @@ export const NewPage: React.FC = () => {
               required
               fullWidth
             />
+            {/* <Typography></Typography> */}
             <TextField
               name="icon"
               variant="filled"

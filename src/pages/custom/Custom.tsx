@@ -19,7 +19,14 @@ import {
   renderSelicChart,
   renderSalesByDealership,
   renderUnemploymentChart,
-  usePageContext
+  usePageContext,
+  renderServiceBillingChart,
+  renderDollarChart,
+  renderEuroChart,
+  renderPricePerDieselChart,
+  renderMarketByCompanyChart,
+  renderTotalOfVehiclesByCompanyChart,
+  renderNumberOfPassengersChart
 } from "../../common";
 import { DraggableItemComponent, DroppableItemComponent } from "./components";
 
@@ -53,23 +60,38 @@ const DRAGGABLE_CHARTS_LIST = [
   },
   {
     id: "drag-chart-5",
-    title: "AAAAAA",
-    element: renderDefaultChart()
+    title: "Faturamento por serviço",
+    element: renderServiceBillingChart()
   },
   {
     id: "drag-chart-6",
-    title: "AAAAAA",
-    element: renderDefaultChart()
+    title: "Variação do Dólar",
+    element: renderDollarChart()
   },
   {
     id: "drag-chart-7",
-    title: "AAAAAA",
-    element: renderDefaultChart()
+    title: "Variação do Euro",
+    element: renderEuroChart()
   },
   {
     id: "drag-chart-8",
-    title: "AAAAAA",
-    element: renderDefaultChart()
+    title: "Preço por Diesel",
+    element: renderPricePerDieselChart()
+  },
+  {
+    id: "drag-chart-9",
+    title: "Total de veículos por empresa",
+    element: renderTotalOfVehiclesByCompanyChart()
+  },
+  {
+    id: "drag-chart-10",
+    title: "Mercado x Empresa",
+    element: renderMarketByCompanyChart()
+  },
+  {
+    id: "drag-chart-11",
+    title: "Número de passageiros (Rodoviárias)",
+    element: renderNumberOfPassengersChart()
   }
 ];
 
