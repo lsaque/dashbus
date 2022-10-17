@@ -11,8 +11,7 @@ export const CardHeaderComponent: React.FC<CardHeaderProps> = ({
     <CardHeaderStyles
       {...props}
       titleTypographyProps={{
-        fontWeight: "bold",
-        noWrap: true
+        fontWeight: "bold"
       }}
       action={
         props.action || (

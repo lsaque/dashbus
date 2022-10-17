@@ -68,7 +68,7 @@ export const PageContextProvider: React.FC<PropsWithChildren> = ({
         },
         {
           element: renderTotalOfVehiclesByCompanyChart(),
-          name: "Índice de preço ao consumidor",
+          name: "Total de veículos por empresa",
           gridArea: "d",
           id: "drop-card-d"
         },
@@ -87,7 +87,7 @@ export const PageContextProvider: React.FC<PropsWithChildren> = ({
       icon: <TimelineOutlined />,
       charts: [
         {
-          element: renderBusSalesChart(),
+          element: renderSalesByDealership(),
           name: "Vendas - ÔNIBUS",
           gridArea: "a",
           id: "drop-card-a"
@@ -219,7 +219,7 @@ export const PageContextProvider: React.FC<PropsWithChildren> = ({
               <Typography>Setembro de 2018</Typography>
             </div>
           ),
-          name: "Renovação do Proconve",
+          name: "Feriado Prolongado",
           gridArea: "e",
           id: "drop-card-e"
         }
