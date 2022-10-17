@@ -14,14 +14,18 @@ import React, {
   useEffect
 } from "react";
 import {
+  renderAllCustomersData,
   renderBusSalesChart,
   renderDefaultChart,
   renderDollarChart,
+  renderExportationChart,
   renderFleetRenewalData,
   renderMarketByCompanyChart,
   renderNumberOfPassengersChart,
   renderProconveRenovationChart,
-  renderServiceBillingChart
+  renderSalesByDealership,
+  renderServiceBillingChart,
+  renderTotalOfVehiclesByCompanyChart
 } from "../..";
 
 import sepCalendar from "../../../assets/images/sep_calendar.jpg";
@@ -42,7 +46,39 @@ export const PageContextProvider: React.FC<PropsWithChildren> = ({
       id: 0,
       name: "General",
       to: "general",
-      icon: <GridViewOutlined />
+      icon: <GridViewOutlined />,
+      charts: [
+        {
+          element: renderSalesByDealership(),
+          name: "Venda de ônibus pelas concessionárias",
+          gridArea: "a",
+          id: "drop-card-a"
+        },
+        {
+          element: renderDollarChart(),
+          name: "Variação do Dólar",
+          gridArea: "b",
+          id: "drop-card-b"
+        },
+        {
+          element: renderAllCustomersData(),
+          name: "Clientes",
+          gridArea: "c",
+          id: "drop-card-c"
+        },
+        {
+          element: renderTotalOfVehiclesByCompanyChart(),
+          name: "Índice de preço ao consumidor",
+          gridArea: "d",
+          id: "drop-card-d"
+        },
+        {
+          element: renderExportationChart(),
+          name: "Exportação",
+          gridArea: "e",
+          id: "drop-card-e"
+        }
+      ]
     },
     {
       id: 1,
@@ -186,38 +222,6 @@ export const PageContextProvider: React.FC<PropsWithChildren> = ({
           name: "Renovação do Proconve",
           gridArea: "e",
           id: "drop-card-e"
-        }
-      ]
-    },
-    {
-      id: 3,
-      name: "Custom",
-      to: `custom/3`,
-      icon: <AbcOutlined />,
-      charts: [
-        {
-          element: null,
-          name: null,
-          gridArea: "a",
-          id: "drop-card-a"
-        },
-        {
-          element: null,
-          name: null,
-          gridArea: "b",
-          id: "drop-card-b"
-        },
-        {
-          element: null,
-          name: null,
-          gridArea: "c",
-          id: "drop-card-c"
-        },
-        {
-          element: null,
-          name: null,
-          gridArea: "d",
-          id: "drop-card-d"
         }
       ]
     }

@@ -3315,3 +3315,17 @@ export const renderNumberOfPassengersChart = () => {
     </ResponsiveContainer>
   );
 };
+
+export const renderAllCustomersData = () => {
+  return (
+    <>
+      {CUSTOMERS_MOCK_LIST.map(({ name }, index) => (
+        <CustomerComponent
+          name={name}
+          img={`https://picsum.photos/200/300?random=${index}`}
+          isOnline={Boolean(Math.random())}
+        />
+      ))}
+    </>
+  );
+};

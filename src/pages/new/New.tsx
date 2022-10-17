@@ -1,15 +1,6 @@
-import React, { useId } from "react";
+import React, { useState } from "react";
+import { Button, Divider, TextField, Typography } from "@mui/material";
 import {
-  Button,
-  CardContent,
-  CardHeader,
-  Divider,
-  Paper,
-  TextField,
-  Typography
-} from "@mui/material";
-import {
-  AbcOutlined,
   AccountTreeOutlined,
   AddchartOutlined,
   DataUsageOutlined,
@@ -33,6 +24,8 @@ import {
 } from "../../common";
 
 import { NewStyles } from "./New.styles";
+import { SelectItemIconComponent } from "./components/selectItemIcon/SelectItemIcon";
+import { useNavigate } from "react-router-dom";
 
 const ICONS_LIST = [
   {
@@ -80,13 +73,15 @@ const ICONS_LIST = [
     icon: <NetworkPingOutlined />
   },
   {
-    id: 10,
+    id: 11,
     icon: <AccountTreeOutlined />
   }
 ];
 
 export const NewPage: React.FC = () => {
   const { pages, setPages } = usePageContext();
+  const [selectedIcon, setSelectedIcon] = useState(ICONS_LIST[0]);
+  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -94,7 +89,7 @@ export const NewPage: React.FC = () => {
     const data = new FormData(e.currentTarget);
 
     const name = String(data.get("name"));
-    const icon = <AbcOutlined />;
+    const icon = selectedIcon.icon;
     const id = pages.length + 1;
     const to = `custom/${id}`;
 
@@ -151,14 +146,20 @@ export const NewPage: React.FC = () => {
               required
               fullWidth
             />
-            {/* <Typography></Typography> */}
-            <TextField
-              name="icon"
-              variant="filled"
-              label="Ícone"
-              placeholder="Selecione o ícone da página"
-              fullWidth
-            />
+            <Typography>Selecione um ícone para página</Typography>
+            <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+              {ICONS_LIST.map((icon) => (
+                <SelectItemIconComponent
+                  isSelected={icon.id === selectedIcon.id}
+                  icon={icon}
+                  type="button"
+                  onClick={() => {
+                    console.log("clicou");
+                    setSelectedIcon(icon);
+                  }}
+                />
+              ))}
+            </div>
           </CardContentComponent>
           <CardFooterComponent>
             <Button variant="contained" type="submit">
